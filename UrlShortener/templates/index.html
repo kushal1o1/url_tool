@@ -1,3 +1,46 @@
-<html>
-    <h1>dfsdgfj</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url Tool</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <form id="url_form">
+        {% csrf_token %}
+      <input type="text" name="url_link" id="url_link" placeholder="Enter Your Url">
+      <div class="buttons">
+        <button type="submit" id="shorten">Shorten</button>
+      </div>
+      </form>
+      <section id="section"><h2></h2></section>
+     <br>
+     <h1>
+        History links
+     </h1>
+        <ul>
+            {% for url in urls %}
+                <li><a href="{url.url_link}}">{{url.url_link}}</a> ==  <a href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a></li>
+            {% endfor %}
+        </ul>
+   
+</body>
+<script type="text/javascript">
+    $(document).on('submit','#url_form',function(e){
+      e.preventDefault();
+  
+      $.ajax({
+        type:'POST',
+        url:'/create_short_url',
+        data:{
+          url_link:$('#url_link').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function(data){
+          $('h2').html("http://127.0.0.1:8000/"+data)
+        }
+      });
+    });
+</script>
 </html>
