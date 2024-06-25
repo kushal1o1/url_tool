@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 import uuid
 from .models import Url
@@ -21,5 +21,5 @@ def createShortUrl(request):
         return HttpResponse(uid)
     
 def go(request, pk):
-    url_details = Url.objects.get(uuid=pk)
+    url_details = get_object_or_404(Url, uuid=pk)
     return redirect(url_details.url_link)

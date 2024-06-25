@@ -4,30 +4,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Url Tool</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <form id="url_form">
+  <section class="conatiner section  flex ">
+      <form id="url_form">
         {% csrf_token %}
-      <input type="text" name="url_link" id="url_link" placeholder="Enter Your Url">
-      <div class="buttons">
-        <button type="submit" id="shorten">Shorten</button>
-      </div>
+      
+<input  type="text" name="url_link" id="url_link" placeholder="Enter Your Url">
+        
+          <button type="submit" class="button" id="shorten">Shorten</button>
+     
       </form>
-      <section id="section"><h2></h2></section>
+  </section>
+   {% load static%}
+      <section id="section" class="section  container">
+        <p class="section_subtitle" id="newlinktext">Your New Link</p>
+        <div class="flex">  <h2></h2><img class="copy" id="copy" src="{%static 'images/copy.png'%}" alt=""></div>
+      
+      </section>
+     
      <br>
-     <h1>
+     <section class="section">
+      <h1 class="section_title">
         History links
      </h1>
-        <ul>
+        <ul class="container section ">
             {% for url in urls %}
                 <li><a href="{url.url_link}}">{{url.url_link}}</a> ==  <a href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a></li>
             {% endfor %}
         </ul>
+     </section>
+     
    
 </body>
 <script type="text/javascript">
     $(document).on('submit','#url_form',function(e){
+     document.getElementById("copy").style.display='block';
+     document.getElementById("newlinktext").style.display='block';
+
       e.preventDefault();
   
       $.ajax({
@@ -38,7 +54,8 @@
           csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function(data){
-          $('h2').html("http://127.0.0.1:8000/"+data)
+        
+          $('h2').html("http://127.0.0.1:8000/" + data )
         }
       });
     });
