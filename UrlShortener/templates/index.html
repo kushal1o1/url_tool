@@ -1,14 +1,8 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Url Tool</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    {% load static%}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
-  <section class="conatiner section  flex ">
+{% extends 'base.html' %}
+{%block tittle%}Url Tool{%endblock%}
+{%block loginout%}LogOut{%endblock%}
+{% block mainContent%}
+  <section class="container section  flex ">
       <form id="url_form">
         {% csrf_token %}
       
@@ -18,46 +12,58 @@
      
       </form>
   </section>
-   {% load static%}
-      <section id="section" class="section  container">
+
+      <section  class="  container">
         <p class="section_subtitle" id="newlinktext">Your New Link</p>
-        <div class="flex">  <h2></h2><img class="copy" id="copy" src="{%static 'images/copy.png'%}" alt=""></div>
+       <div class="flex">  <h2 id="textToCopy"></h2>
+        <button id="copy" class="copy-btn">
+          {% load static%}
+          <img src="{%static 'images/copy.png'%}" alt="Copy" class="copy-img">
+          <img src="{%static 'images/checked.png'%}" alt="Copied" class="copied-img">
+      </button>
       
+
+        </div>
       </section>
-     
+      <script>
+        document.getElementById('copy').addEventListener('click', function() {
+          var textToCopy = document.getElementById('textToCopy').innerText;
+      
+          var tempTextarea = document.createElement('textarea');
+          tempTextarea.value = textToCopy;
+          document.body.appendChild(tempTextarea);
+      
+          tempTextarea.select();
+          document.execCommand('copy');
+      
+          document.body.removeChild(tempTextarea);
+  
+          var copyButton = document.getElementById('copy');
+          copyButton.classList.add('copied');
+
+          setTimeout(function() {
+              copyButton.classList.remove('copied');
+          }, 2000);
+          ;
+      });
+
+
+      </script>
      <br>
      <section class="section">
       <h1 class="section_title">
         History links
      </h1>
-        <ul class="container section ">
-            {% for url in urls %}
-                <li><a href="{url.url_link}}">{{url.url_link}}</a> ==  <a href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a></li>
-            {% endfor %}
-        </ul>
-     </section>
-     
-   
-</body>
-<script type="text/javascript">
-    $(document).on('submit','#url_form',function(e){
-     document.getElementById("copy").style.display='block';
-     document.getElementById("newlinktext").style.display='block';
-
-      e.preventDefault();
   
-      $.ajax({
-        type:'POST',
-        url:'/create_short_url',
-        data:{
-          url_link:$('#url_link').val(),
-          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-        },
-        success: function(data){
-        
-          $('h2').html("http://127.0.0.1:8000/" + data )
-        }
-      });
-    });
-</script>
-</html>
+      <ul class="grid  container section" >
+        {% for url in urls %}
+            <li class="link_div">
+                <a class="light_text" href="{{url.url_link}}" target="_blank">{{url.url_link}}</a> 
+                <hr>
+                <a  class='section_subtitle shortlink' target="_blank" href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+   </section>
+       
+   {%endblock%}

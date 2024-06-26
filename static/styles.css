@@ -85,7 +85,7 @@ textarea {
 }
 
 body {
-  background-color: var(--container-color);
+  background-color:var(--container-color);
   color: var(--text-color);
 }
 
@@ -98,12 +98,34 @@ h3 {
 
 ul {
   list-style: none;
+
 }
 
-a {
+.link_div .shortlink {
   text-decoration: none;
+  color: var(--container-color);
+ 
+  margin: 0.2rem auto;
+
+}
+.about_link{
+  text-decoration: none;
+  color: var(--title-color-dark);
+  margin: 0.2rem auto;
 }
 
+.light_text{
+  color: var(--text-color);
+
+}
+#scrollToSection{
+  cursor: pointer;
+
+}
+strong{
+  font-weight: var(--font-semi-bold);
+color:var(--title-color-dark)
+}
 input{
   border: none;
   outline: none;
@@ -118,14 +140,37 @@ button {
 }
 #copy{
   display:none;
-  width:40px;
-  margin:var(--mb-2)
+  background-color:var(--body-color);
+  margin-left: 0.7rem;
+
 }
+.about_link{
+  text-decoration: none;
+  color: var(--title-color-dark);
+  font-weight: bold;
+ 
+}
+
+.copy-btn img {
+  height: 2.2rem;
+  margin-left: 5px;
+  display: inline;
+}
+.copy-btn .copied-img {
+  display: none;
+}
+.copy-btn.copied .copy-img {
+  display: none;
+}
+.copy-btn.copied .copied-img {
+  display: inline;
+}
+
 
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
-  padding: 6rem 0 2rem;
+  padding: 2rem 0 2rem 0;
 }
 
 .section_title {
@@ -136,7 +181,9 @@ button {
 .section_subtitle {
   display: block;
   font-size: var(--h2-font-size);
-  margin-bottom: 4rem;
+  
+
+
 }
 
 .section_title,
@@ -144,11 +191,23 @@ button {
   text-align: center;
 }
 
+.section_description
+{
+  text-align: start;
+  margin-top: 1rem;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  line-height: 1.6;
+
+
+}
+
 /*=============== LAYOUT ===============*/
 .container {
   max-width: 968px;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .grid {
@@ -163,7 +222,7 @@ button {
 }
 
 /*=============== BUTTONS ===============*/
-.button,input{
+.button,input,.links{
   
   display: inline-block;
   background-color: var(--title-color);
@@ -171,6 +230,14 @@ button {
   padding: 1.25rem 2rem;
   border-radius: 1rem;
   font-weight: var(--font-medium);
+}
+.link_div{
+  background-color: var(--title-color);
+  color: var(--tiny-font-size);
+  padding: 1.25rem 2rem;
+  border-radius: 1rem;
+  font-weight: var(--font-medium);
+
 }
 
 .button:hover {
@@ -185,6 +252,8 @@ button {
   display: inline-flex;
   align-items: center;
 }
+
+
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
@@ -215,7 +284,7 @@ button {
   }
 
   .section_subtitle {
-    margin-bottom: var(--mb-3);
+    margin-bottom: var(--mb-0-25);
   }
 }
 

@@ -23,3 +23,7 @@ def createShortUrl(request):
 def go(request, pk):
     url_details = get_object_or_404(Url, uuid=pk)
     return redirect(url_details.url_link)
+
+
+def about(request):
+    return render(request,'about.html')
