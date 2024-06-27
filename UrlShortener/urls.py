@@ -9,7 +9,6 @@ urlpatterns = [
     
     
 ]
-# handle unmatched urls
 urlpatterns += [
     re_path(r'^.*$',views.notFound,name='notFound')
 ]

@@ -1,68 +1,78 @@
 {% extends 'base.html' %}
 {%block tittle%}Url Tool{%endblock%}
 {% block mainContent%}
-  <section class="container section  flex ">
-      <form id="url_form" class="container">
-        {% csrf_token %}
-      
-          <input  type="text" name="url_link" id="url_link" placeholder="Enter Your Url">
-        
-          <button type="submit" class="button" id="shorten">Shorten</button>
-     
-      </form>
-  </section>
+<section class="container section  flex ">
+  <form id="url_form" class="container">
+    {% csrf_token %}
 
-      <section  class="  container">
-        <p class="section_subtitle" id="newlinktext">Your New Link</p>
-       <div class="flex container"> <strong> <h2 id="textToCopy"></h2></strong>
-        <button id="copy" class="copy-btn">
-          {% load static%}
-          <img src="{%static 'images/copy.png'%}" alt="Copy" class="copy-img">
-          <img src="{%static 'images/checked.png'%}" alt="Copied" class="copied-img">
-      </button>
-      
+    <input type="text" name="url_link" id="url_link" placeholder="Enter Your Url">
 
-        </div>
-      </section>
-      <script>
-        document.getElementById('copy').addEventListener('click', function() {
-          var textToCopy = document.getElementById('textToCopy').innerText;
-      
-          var tempTextarea = document.createElement('textarea');
-          tempTextarea.value = textToCopy;
-          document.body.appendChild(tempTextarea);
-      
-          tempTextarea.select();
-          document.execCommand('copy');
-      
-          document.body.removeChild(tempTextarea);
-  
-          var copyButton = document.getElementById('copy');
-          copyButton.classList.add('copied');
+    <button type="submit" class="button" id="shorten">Shorten</button>
 
-          setTimeout(function() {
-              copyButton.classList.remove('copied');
-          }, 2000);
-          ;
-      });
+  </form>
+</section>
+
+<section class="  container">
+  <p class="section_subtitle" id="newlinktext">Your New Link</p>
+  <div class="flex container"> <strong>
+      <h2 id="textToCopy"></h2>
+    </strong>
+    <button id="copy" class="copy-btn">
+      {% load static%}
+      <img src="{%static 'images/copy.png'%}" alt="Copy" class="copy-img">
+      <img src="{%static 'images/checked.png'%}" alt="Copied" class="copied-img">
+    </button>
 
 
-      </script>
-     <br>
-     <section class="section">
-      <h1 class="section_title">
-        History links
-     </h1>
-  
-      <ul class="grid  container section" >
-        {% for url in urls %}
-            <li class="link_div">
-              <a class="light_text" href="{{url.url_link}}" target="_blank"> <div class="number ">  {{forloop.counter}}</div> {{url.url_link}} </a> 
-               <hr>
-               <a  class='section_subtitle shortlink' target="_blank" href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a>
-            </li>
-        {% endfor %}
-    </ul>
-   </section>
-       
-   {%endblock%}
+  </div>
+</section>
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var textToCopy = document.getElementById('textToCopy').innerText;
+
+    var tempTextarea = document.createElement('textarea');
+    tempTextarea.value = textToCopy;
+    document.body.appendChild(tempTextarea);
+
+    tempTextarea.select();
+    document.execCommand('copy');
+
+    document.body.removeChild(tempTextarea);
+
+    var copyButton = document.getElementById('copy');
+    copyButton.classList.add('copied');
+
+    setTimeout(function () {
+      copyButton.classList.remove('copied');
+    }, 2000);
+    ;
+  });
+
+
+</script>
+<br>
+<section class="section">
+  <h1 class="section_title">
+    History links
+  </h1>
+
+  <ul class="grid  container section">
+    {% if urls %}
+    {% for url in urls %}
+    <li class="link_div">
+      <a class="light_text" href="{{url.url_link}}" target="_blank">
+        <div class="number "> {{forloop.counter}}</div> {{url.url_link}}
+      </a>
+      <hr>
+      <a class='section_subtitle shortlink' target="_blank"
+        href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a>
+    </li>
+    {% endfor %}
+    {% else %}
+    <li class="link_div section_subtitle ">No links yet</li>
+    {% endif %}
+
+  </ul>
+</section>
+
+{%endblock%}

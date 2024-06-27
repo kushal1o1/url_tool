@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 import uuid
 from .models import Url
-# Create your views here.
 def index(request):
     urls= Url.objects.all().order_by('-created_at')
     context = {

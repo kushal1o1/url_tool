@@ -1,63 +1,66 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block tittle%}{%endblock%}</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    {% load static%}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block tittle%}{%endblock%}</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  {% load static%}
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 </head>
+
 <body>
   <section class="container section">
     <h1 class="section_title" id="scrollToSection">Url Tool</h1>
     <p class="section_subtitle">Shorten your link</p>
   </section>
- 
+
   {%block mainContent %}{%endblock%}}
-   
-  
 
 
-<section>
-  <footer id="AboutSection" class=" section container">
-    <h1 class="section_title">&#169; Kushal. All right reserved.</h1> <br>
-    <p class="section_subtitle"> <a class="about_link" href="/">Url Tool </a></p>
-       <p class="section_subtitle"> <a class="about_link" href="/about">About</a></p>
- 
+
+
+  <section>
+    <footer id="AboutSection" class=" section container">
+      <h1 class="section_title">&#169; Kushal. All right reserved.</h1> <br>
+      <p class="section_subtitle"> <a class="about_link" href="/">Url Tool </a></p>
+      <p class="section_subtitle"> <a class="about_link" href="/about">About</a></p>
+
 
     </footer>
-</section>
+  </section>
 
 
 </body>
 <script type="text/javascript">
-    $(document).on('submit','#url_form',function(e){
-     document.getElementById("copy").style.display='block';
-     document.getElementById("newlinktext").style.display='block';
+  $(document).on('submit', '#url_form', function (e) {
+    document.getElementById("copy").style.display = 'block';
+    document.getElementById("newlinktext").style.display = 'block';
 
-      e.preventDefault();
-  
-      $.ajax({
-        type:'POST',
-        url:'/create_short_url',
-        data:{
-          url_link:$('#url_link').val(),
-          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-        },
-        success: function(data){
-          
-          $('h2').html("http://127.0.0.1:8000/" + data )
-        }
-      });
+    e.preventDefault();
+
+    $.ajax({
+      type: 'POST',
+      url: '/create_short_url',
+      data: {
+        url_link: $('#url_link').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function (data) {
+
+        $('h2').html("http://127.0.0.1:8000/" + data)
+      }
     });
+  });
 
 
 
-      document.addEventListener('DOMContentLoaded', function() {
-          document.getElementById('scrollToSection').addEventListener('click', function() {
-              document.getElementById('AboutSection').scrollIntoView({ behavior: 'smooth' });
-          });
-      });
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('scrollToSection').addEventListener('click', function () {
+      document.getElementById('AboutSection').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
 </script>
+
 </html>

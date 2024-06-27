@@ -1,35 +1,52 @@
 {% extends 'base.html' %}
 {%block tittle%}Url About{%endblock%}
 {% block mainContent%}
-    <section  class="container section section_description">
-        <h2 class="section_title">About</h2>
-        <p><strong>Url Tool</strong> is a Django-based web application designed to showcase efficient URL shortening capabilities while demonstrating best practices in web development. Developed as a project website, Url Tool combines robust backend processing with responsive frontend design to create a functional and user-friendly tool for shortening URLs.</p>
-        
-        <h2 class="section_title">Project Overview:</h2>
-        <p>Url Tool leverages Django's powerful framework and integrates seamlessly with HTML, CSS, JavaScript, and AJAX to deliver the following features:</p>
-        
-        <ul>
-            <li><strong>URL Shortening Functionality:</strong> Implemented using Django's models and views, Url Tool converts lengthy URLs into shortened links with a single click. This functionality demonstrates backend processing of user input and data manipulation.</li>
-            
-            <li><strong>Copy Feature:</strong> Enhancing user experience, Url Tool includes a JavaScript-driven copy feature. Users can conveniently copy shortened URLs to their clipboard, facilitating easy sharing across platforms.</li>
-            
-            <li><strong>Shared History Section:</strong> A key feature of Url Tool is its shared history section. Utilizing Django's database management capabilities, this section displays the most recent <strong>99</strong> shortened URLs, providing transparency and collaborative data visibility.</li>
-        </ul>
-        
-        <h2 class="section_title">Technical Implementation:</h2>
-        
-        <p><strong>Backend with Django:</strong> Url Tool optimizes backend performance by efficiently managing database entries through Django's ORM (Object-Relational Mapping). It ensures rapid data access and storage management while adhering to resource limitations.</p>
-        
-        <p><strong>Frontend Design:</strong> Designed with HTML5, CSS3, and JavaScript, Url Tool offers a responsive and intuitive user interface. JavaScript enhances interactivity, allowing dynamic updates and smooth transitions between pages. AJAX further enhances frontend functionality by enabling asynchronous data retrieval and interaction without refreshing the entire page.</p>
-        
-        <h2 class="section_title">Project Goals:</h2>
-        
-        <p>Url Tool serves as an educational resource and practical demonstration of:</p>
-        
-        <ul>
-            <li><strong>Django Framework:</strong> Demonstrating the use of Django for web application development, Url Tool showcases how to build scalable and secure applications while maintaining code efficiency.</li>
-            
-            <li><strong>Frontend Integration:</strong> Integrating frontend technologies such as HTML, CSS, JavaScript, and AJAX, Url Tool emphasizes user-centric design principles and responsive web development practices.</li>
-        </ul>
-    </section>
-    {%endblock%}
+<section class="container section section_description">
+    <h2 class="section_title">About</h2>
+    <p><strong>Url Tool</strong> is a Django-based web application designed to showcase efficient URL shortening
+        capabilities while demonstrating best practices in web development. Developed as a project website, Url Tool
+        combines robust backend processing with responsive frontend design to create a functional and user-friendly tool
+        for shortening URLs.</p>
+
+    <h2 class="section_title">Project Overview:</h2>
+    <p>Url Tool leverages Django's powerful framework and integrates seamlessly with HTML, CSS, JavaScript, and AJAX to
+        deliver the following features:</p>
+
+    <ul>
+        <li><strong>URL Shortening Functionality:</strong> Implemented using Django's models and views, Url Tool
+            converts lengthy URLs into shortened links with a single click. This functionality demonstrates backend
+            processing of user input and data manipulation.</li>
+
+        <li><strong>Copy Feature:</strong> Enhancing user experience, Url Tool includes a JavaScript-driven copy
+            feature. Users can conveniently copy shortened URLs to their clipboard, facilitating easy sharing across
+            platforms.</li>
+
+        <li><strong>Shared History Section:</strong> A key feature of Url Tool is its shared history section. Utilizing
+            Django's database management capabilities, this section displays the most recent <strong>99</strong>
+            shortened URLs, providing transparency and collaborative data visibility.</li>
+    </ul>
+
+    <h2 class="section_title">Technical Implementation:</h2>
+
+    <p><strong>Backend with Django:</strong> Url Tool optimizes backend performance by efficiently managing database
+        entries through Django's ORM (Object-Relational Mapping). It ensures rapid data access and storage management
+        while adhering to resource limitations.</p>
+
+    <p><strong>Frontend Design:</strong> Designed with HTML5, CSS3, and JavaScript, Url Tool offers a responsive and
+        intuitive user interface. JavaScript enhances interactivity, allowing dynamic updates and smooth transitions
+        between pages. AJAX further enhances frontend functionality by enabling asynchronous data retrieval and
+        interaction without refreshing the entire page.</p>
+
+    <h2 class="section_title">Project Goals:</h2>
+
+    <p>Url Tool serves as an educational resource and practical demonstration of:</p>
+
+    <ul>
+        <li><strong>Django Framework:</strong> Demonstrating the use of Django for web application development, Url Tool
+            showcases how to build scalable and secure applications while maintaining code efficiency.</li>
+
+        <li><strong>Frontend Integration:</strong> Integrating frontend technologies such as HTML, CSS, JavaScript, and
+            AJAX, Url Tool emphasizes user-centric design principles and responsive web development practices.</li>
+    </ul>
+</section>
+{%endblock%}
