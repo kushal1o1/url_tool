@@ -121,6 +121,7 @@ ul {
   cursor: pointer;
 
 }
+
 strong{
   font-weight: var(--font-semi-bold);
 color:var(--title-color-dark)

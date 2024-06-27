@@ -11,14 +11,14 @@ def check_url(request):
     if request.method == 'POST':
         url = request.POST.get('url')
         try:
-            # Check for redirections
+
             response = requests.get(url, timeout=5, allow_redirects=True)
             initial_url = response.url
             final_url = response.history[-1].url if response.history else initial_url
             status_code = response.status_code
             redirects = len(response.history)
             
-            # Check URL with VirusTotal
+           
             vt_url = f'https://www.virustotal.com/vtapi/v2/url/report'
             params = {'apikey': VIRUSTOTAL_API_KEY, 'resource': url}
             vt_response = requests.get(vt_url, params=params)
