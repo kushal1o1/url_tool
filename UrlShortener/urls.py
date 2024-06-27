@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path ,re_path
 from . import views
 
 urlpatterns = [
@@ -7,4 +7,9 @@ urlpatterns = [
     path('create_short_url', views.createShortUrl, name='create'),
     path('<str:pk>', views.go, name='go'),
     
+    
+]
+# handle unmatched urls
+urlpatterns += [
+    re_path(r'^.*$',views.notFound,name='notFound')
 ]

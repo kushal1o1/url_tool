@@ -21,9 +21,16 @@ def createShortUrl(request):
         return HttpResponse(uid)
     
 def go(request, pk):
-    url_details = get_object_or_404(Url, uuid=pk)
-    return redirect(url_details.url_link)
+    try:
+        url_details = get_object_or_404(Url, uuid=pk)
+        return redirect(url_details.url_link)
+    except:
+        return render(request, 'pageNotFound.html')
 
 
 def about(request):
     return render(request,'about.html')
+
+
+def notFound(request):
+    return render(request,'pageNotFound.html')
