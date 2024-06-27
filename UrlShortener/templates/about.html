@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{%block tittle%}Url About{%endblock%}
-{% block mainContent%}
+{% block tittle %}Url About{% endblock %}
+{% block mainContent %}
 <section class="container section section_description">
     <h2 class="section_title">About</h2>
     <p><strong>Url Tool</strong> is a Django-based web application designed to showcase efficient URL shortening
@@ -24,6 +24,10 @@
         <li><strong>Shared History Section:</strong> A key feature of Url Tool is its shared history section. Utilizing
             Django's database management capabilities, this section displays the most recent <strong>99</strong>
             shortened URLs, providing transparency and collaborative data visibility.</li>
+        
+        <li><strong>URL Check Feature:</strong> To ensure user safety, Url Tool integrates with the VirusTotal API to 
+            check whether URLs are harmful, malicious, or involve redirects. This security feature enhances the 
+            reliability and trustworthiness of the shortened URLs.</li>
     </ul>
 
     <h2 class="section_title">Technical Implementation:</h2>
@@ -47,6 +51,9 @@
 
         <li><strong>Frontend Integration:</strong> Integrating frontend technologies such as HTML, CSS, JavaScript, and
             AJAX, Url Tool emphasizes user-centric design principles and responsive web development practices.</li>
+
+        <li><strong>Security Practices:</strong> Highlighting the importance of security in web applications, the URL 
+            Check feature underscores the need for proactive measures to ensure user safety and data integrity.</li>
     </ul>
 </section>
-{%endblock%}
+{% endblock %}
