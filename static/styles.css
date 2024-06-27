@@ -101,6 +101,8 @@ ul {
   text-decoration: none;
   color: var(--container-color);
   margin: 0.2rem auto;
+  overflow: hidden;
+
 
 }
 .about_link{
@@ -111,6 +113,8 @@ ul {
 
 .light_text{
   color: var(--text-color);
+  overflow: hidden;
+
 
 }
 #scrollToSection{
@@ -193,6 +197,7 @@ button {
   font-size: var(--normal-font-size);
   font-weight: var(--font-semi-bold);
   line-height: 1.6;
+  overflow: hidden;
 
 
 }
@@ -202,6 +207,8 @@ button {
   max-width: 968px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
+
 
 }
 
