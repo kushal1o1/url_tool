@@ -97,7 +97,7 @@ ul {
 
 }
 
-.link_div .shortlink {
+.shortlink {
   text-decoration: none;
   color: var(--container-color);
   margin: 0.2rem auto;
@@ -221,6 +221,9 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+#link_info{
+  display: none;
 }
 
 /*=============== BUTTONS ===============*/
