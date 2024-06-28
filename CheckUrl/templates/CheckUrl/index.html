@@ -4,7 +4,7 @@
 <section class="container section flex">
     <form id="urlForm" class="container">
         {% csrf_token %}
-        <input type="text" name="url" id="url_link" placeholder="Enter Your Url">
+        <input type="text" required name="url" id="url_link" placeholder="Enter Your Url">
         <button type="submit" class="button" id="shorten">Check</button>
     </form>
 </section>
