@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from decouple import config 
+from django.utils.html import escape
 
 
 VIRUSTOTAL_API_KEY = config('VIRUS_TOTAL_API_KEY')
@@ -9,7 +10,9 @@ VIRUSTOTAL_API_KEY = config('VIRUS_TOTAL_API_KEY')
 
 def check_url(request):
     if request.method == 'POST':
-        url = request.POST.get('url')
+        rawurl = request.POST.get('url')
+        url=escape(rawurl) 
+        print(url)
         try:
 
             response = requests.get(url, timeout=5, allow_redirects=True)

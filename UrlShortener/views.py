@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 import uuid
 from .models import Url
+from django.utils.html import escape
+
 def index(request):
     urls= Url.objects.all().order_by('-created_at')
     context = {
@@ -11,8 +13,8 @@ def index(request):
 
 def createShortUrl(request):
     if request.method == 'POST':
-        url_link = request.POST['url_link']
-        print(url_link)
+        rawUrl = request.POST['url_link']
+        url_link=escape(rawUrl)
         uid = str(uuid.uuid4())[:3]
         print(uid)
         url_object = Url(url_link=url_link,uuid=uid)
