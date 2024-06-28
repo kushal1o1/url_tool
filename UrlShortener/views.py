@@ -3,11 +3,14 @@ from django.http import HttpResponse
 import uuid
 from .models import Url
 from django.utils.html import escape
+from decouple import config 
+
 
 def index(request):
     urls= Url.objects.all().order_by('-created_at')
     context = {
-         'urls':urls
+         'urls':urls,
+         'HOST_URL': config('HOST_URL')
     }
     return render(request, 'index.html',context)
 

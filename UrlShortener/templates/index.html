@@ -60,7 +60,7 @@
             <li class="link_div">
               <a class="light_text" href="{{url.url_link}}" target="_blank"> <div class="number ">  {{forloop.counter}}</div> {{url.url_link}} </a> 
                <hr>
-               <a  class='section_subtitle shortlink' target="_blank" href="http://127.0.0.1:8000/{{url.uuid}}">http://127.0.0.1:8000/{{url.uuid}}</a>
+               <a  class='section_subtitle shortlink' target="_blank" href="{{HOST_URL}}{{url.uuid}}">{{HOST_URL}}{{url.uuid}}</a>
             </li>
         {% endfor %}
         {% else %}
